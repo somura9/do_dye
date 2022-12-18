@@ -1,0 +1,13 @@
+<ul class='crud-menu-btn list-inline float-right'>
+  <li class="list-inline-item">
+    <%= link_to edit_work_path(work), id: "button-edit-#{work.id}" do %>
+      編集
+    <% end %>
+  </li>
+  <li class="list-inline-item">
+    <%= link_to work_path(work), id: "button-delete-#{work.id}", data: { turbo_method: :delete,
+                                                                         turbo_confirm: "削除してもよろしいですか？" } do %>
+      削除
+    <% end %>
+  </li>
+</ul>
