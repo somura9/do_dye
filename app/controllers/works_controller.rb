@@ -13,10 +13,10 @@ class WorksController < ApplicationController
       flash.now[:danger]
       render :new
     end
-
   end
 
   def index
+    @works = Work.all
   end
 
   def show
