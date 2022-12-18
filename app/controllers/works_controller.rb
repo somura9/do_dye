@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :set_work, only: %i[show edit update destroy]
   def new
     @work = Work.new
   end
@@ -20,15 +21,12 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
   end
 
   def edit
-    @work = Work.find(params[:id])
   end
 
   def update
-    @work = Work.find(params[:id])
     if @work.update(work_params)
       redirect_to @work
     else
@@ -38,12 +36,15 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find(params[:id])
     @work.destroy! 
     redirect_to root_path
   end
 
   private
+  def set_work
+    @work = Work.find(params[:id])
+  end
+
   def work_params
     params.require(:work).permit(:title, :summary)
   end
