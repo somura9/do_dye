@@ -5,7 +5,8 @@
     <% end %>
   </li>
   <li class="list-inline-item">
-    <%= link_to work_path(work), id: "button-delete-#{work.id}", method: :delete, data: {confirm: "削除しますか？"} do %>
+    <%= link_to work_path(work), id: "button-delete-#{work.id}", data: { turbo_method: :delete,
+                                                                         turbo_confirm: "削除してもよろしいですか？" } do %>
       削除
     <% end %>
   </li>

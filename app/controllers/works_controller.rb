@@ -8,7 +8,7 @@ class WorksController < ApplicationController
     @work = user.works.build(work_params)
     if @work.valid?
       @work.save
-      redirect_to root_path
+      redirect_to @work
     else
       flash.now[:danger]
       render :new
@@ -24,7 +24,25 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find(params[:id])
   end
+
+  def update
+    @work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to @work
+    else
+      flash.now['danger']
+      render :edit
+    end
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.destroy! 
+    redirect_to root_path
+  end
+
   private
   def work_params
     params.require(:work).permit(:title, :summary)
