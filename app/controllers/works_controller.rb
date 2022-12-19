@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
   before_action :set_work, only: %i[show edit update destroy]
+  skip_before_action :require_login, only: %i[new create show index]
+
   def new
     @work = Work.new
   end
