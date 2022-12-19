@@ -5,8 +5,7 @@ class WorksController < ApplicationController
   end
 
   def create
-    user = User.find(1)
-    @work = user.works.build(work_params)
+    @work = current_user.works.build(work_params)
     if @work.valid?
       @work.save
       redirect_to @work
