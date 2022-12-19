@@ -7,7 +7,9 @@
           </a>
         </h4>
         <div class='mr10 float-right'>
-        <%= render 'works/crud_menus', work: work %>
+        <% if current_user&.own?(work) %>
+          <%= render 'works/crud_menus', work: work %>
+        <% end %>
         </div>
         <ul class="list-inline">
           <li class="list-inline-item">
