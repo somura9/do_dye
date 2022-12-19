@@ -11,7 +11,7 @@
               <h1 style='display: inline;'><%= @work.title %></h3>
                 <%= render 'crud_menus', work: @work %>
               <ul class="list-inline">
-                <li class="list-inline-item">by <%= @work.user.name %></li>
+                <li class="list-inline-item">by <%= link_to @work.user.name, user_path(@work.user.id) %></li>
                 <li class="list-inline-item"><%= l @work.created_at, format: :long %></li>
               </ul>
             </div>

@@ -1,0 +1,24 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+    アバター
+    <h1><%= @user.name %></h1>
+     <%= @user.bio %>
+    <%= link_to 'ユーザー編集', edit_user_path %>
+    <%= link_to user_path(@user), id: "button-delete-#{@user.id}", data: { turbo_method: :delete,
+                                                                         turbo_confirm: "本当に退会されますか？" } do %>
+    退会
+    <% end %>
+  <!-- 作品一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @works.present? %>
+          <%= render @works %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
