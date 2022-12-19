@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :set_work, only: %i[show edit update destroy]
+  before_action :set_current_user_work, only: %i[edit update destroy]
   skip_before_action :require_login, only: %i[new create show index]
 
   def new
@@ -22,6 +22,7 @@ class WorksController < ApplicationController
   end
 
   def show
+    @work = Work.find(params[:id])
   end
 
   def edit
@@ -42,8 +43,8 @@ class WorksController < ApplicationController
   end
 
   private
-  def set_work
-    @work = Work.find(params[:id])
+  def set_current_user_work
+    @work = current_user.works.find(params[:id])
   end
 
   def work_params
