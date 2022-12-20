@@ -110,3 +110,5 @@ Session.vim
 
 #独断
 .github
+/app/assets/builds/*
+!/app/assets/builds/.keep
