@@ -1,27 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-      <h1>Signup</h1>
+<div class="w-full max-w-xs mx-auto">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-4">
+      <div class="text-3xl font-bold pb-4">
+        <h1>Signup</h1>
+      </div>
       <%= form_with model: @user, local: true do |f| %>
-        <div class="form-group">
+        <div class="block text-black-700 text-sm font-bold mb-2">
           <%= f.label :name %>
           <%= f.text_field :name, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="block text-black-700 text-sm font-bold mb-2">
           <%= f.label :email %>
           <%= f.text_field :email, class: 'form-control' %>
         </div>
-        <div class="form-group">
+        <div class="block text-black-700 text-sm font-bold mb-2">
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control'%>
         </div>
-        <div class="form-group">
+        <div class="block text-black-700 text-sm font-bold mb-2">
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
-        <%= f.submit 'signup', class: 'btn btn-primary' %>
+        <div class='flex items-center justify-between'>
+          <%= f.submit 'signup', class: 'bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' %>
+        </div>
       <% end %>
-      <div class='text-center'>
+      <div class='ttext-center text-gray-500 text-xs'>
         <%= link_to ('login_page'), login_path %>
       </div>
     </div>

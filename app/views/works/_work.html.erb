@@ -1,25 +1,26 @@
-<div class="col-sm-12 col-lg-4 mb-3">
-  <div id="work-id-<%= work.id %>">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">
+<div class="container">
+  <div id="work-id-<%= work.id %> ">
+    <div class="container border border-black mx-auto my-4 px-4">
+      <div class="my-2">
+        <div class="text-3xl font-bold">
           <%= link_to work.title, work_path(work) %>
-          </a>
-        </h4>
+        </div>
         <div class='mr10 float-right'>
         <% if current_user&.own?(work) %>
           <%= render 'works/crud_menus', work: work %>
         <% end %>
         </div>
-        <ul class="list-inline">
-          <li class="list-inline-item">
-            <%= link_to work.user.name, user_path(work.user.id) %>
+        <ul class="list-inline pl-10">
+          <li class="list-inline-item pt-0.5">
+            <%= link_to "author: #{work.user.name}", user_path(work.user.id) %>
+          </li>
+          <li class="list-inline-item pt-0.5">
+            </p><%= work.summary %></p>
           </li>
           <li class="list-inline-item">
             <%= l work.created_at, format: :long %>
           </li>
         </ul>
-        <p class="card-text"><%= work.summary %></p>
       </div>
     </div>
   </div>

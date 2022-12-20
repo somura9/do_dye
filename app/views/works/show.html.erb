@@ -8,13 +8,18 @@
               サムネイル
             </div>
             <div class='col-md-9'>
-              <h1 style='display: inline;'><%= @work.title %></h3>
-              <% if current_user&.own?(@work) %>
-                <%= render 'crud_menus', work: @work %>
-              <% end %>
+              <div class='text-3xl font-bold'>
+                <%= @work.title %>
+              </div>
+              <div class='mr10 float-right'>
+                <% if current_user&.own?(@work) %>
+                  <%= render 'crud_menus', work: @work %>
+                <% end %>
+              </div>
               <ul class="list-inline">
-                <li class="list-inline-item">by <%= link_to @work.user.name, user_path(@work.user.id) %></li>
-                <li class="list-inline-item"><%= l @work.created_at, format: :long %></li>
+                <li class="list-inline-item"><%= link_to "author: #{@work.user.name}", user_path(@work.user.id) %></li>
+                <li class="list-inline-item">登録:<%= l @work.created_at, format: :long %></li>
+                <li class="list-inline-item">更新:<%= l @work.updated_at, format: :long %></li>
               </ul>
             </div>
           </div>

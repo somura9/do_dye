@@ -67,3 +67,5 @@ end
 gem 'sorcery'
 gem 'byebug'
 
+
+gem "tailwindcss-rails", "~> 2.0"
