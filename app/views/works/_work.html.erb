@@ -1,27 +1,13 @@
-<div class="container">
-  <div id="work-id-<%= work.id %> ">
-    <div class="container border border-black mx-auto my-4 px-4">
-      <div class="my-2">
-        <div class="text-3xl font-bold">
-          <%= link_to work.title, work_path(work) %>
-        </div>
-        <div class='mr10 float-right'>
-        <% if current_user&.own?(work) %>
-          <%= render 'works/crud_menus', work: work %>
-        <% end %>
-        </div>
-        <ul class="list-inline pl-10">
-          <li class="list-inline-item pt-0.5">
-            <%= link_to "author: #{work.user.name}", user_path(work.user.id) %>
-          </li>
-          <li class="list-inline-item pt-0.5">
-            </p><%= work.summary %></p>
-          </li>
-          <li class="list-inline-item">
-            <%= l work.created_at, format: :long %>
-          </li>
-        </ul>
-      </div>
+<div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <%= image_tag work.thumbnail.url, class: "rounded-t-lg"%>
+    <div class='mr10 float-right'>
+      <% if current_user&.own?(work) %>
+        <%= render 'works/crud_menus', work: work %>
+      <% end %>
     </div>
-  </div>
+    <div class="p-5">
+        <%= link_to work.title, work_path(work), class: "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" %>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= work.summary %></p>
+        <%= link_to "author: #{work.user.name}", user_path(work.user.id), class: "mb-3 font-normal text-gray-700 dark:text-gray-400"%>
+    </div>
 </div>

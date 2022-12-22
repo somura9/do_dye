@@ -48,6 +48,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    params.require(:work).permit(:title, :summary)
+    params.require(:work).permit(:title, :summary, :thumbnail, :thumbnail_cache)
   end
 end
