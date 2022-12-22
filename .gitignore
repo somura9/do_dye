@@ -112,3 +112,6 @@ Session.vim
 .github
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+#ユーザーがupした画像
+/public/uploads
