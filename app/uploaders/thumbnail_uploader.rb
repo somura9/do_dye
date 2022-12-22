@@ -1,7 +1,8 @@
 class ThumbnailUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
+  process resize_to_fill: [1200, 800, "Center"]
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -16,18 +17,6 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
   def default_url
     'sample.png'
   end
-
-  # Process files as they are uploaded:
-  # process scale: [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
-  # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process resize_to_fit: [50, 50]
-  # end
 
   def extension_allowlist
     %w(jpg jpeg gif png)
