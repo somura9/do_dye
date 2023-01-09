@@ -1,0 +1,9 @@
+<li class="mb-10 ml-4">
+  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500"><%= embed.updated_at %></time>
+  <blockquote class="twitter-tweet"> <a href="<%=embed.identifier%>"></a></blockquote></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <% if current_user&.own?(@work) %>
+    <%= render 'work_blocks/crud_menu', work: work, work_block: work_block, embed: work_block.blockable %>
+ <% end %>
+</li>

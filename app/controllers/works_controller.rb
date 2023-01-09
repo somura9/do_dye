@@ -23,6 +23,7 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @work_blocks = @work.work_blocks.preload(:blockable)
   end
 
   def edit

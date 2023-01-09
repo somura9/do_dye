@@ -1,6 +1,7 @@
 <div class="container pt-5">
   <div class="row mb-3">
     <div class="col-lg-8 offset-lg-2">
+      <!-- 作品のサムネ、題名とか -->
       <article class="card">
         <div class="card-body">
           <div class='row'>
@@ -16,48 +17,63 @@
                   <%= render 'crud_menus', work: @work %>
                 <% end %>
               </div>
-              
             </div>
           </div>
         </div>
       </article>
 
-      
-<div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
-        <li class="mr-2" role="presentation">
-            <button class="inline-block p-4 rounded-t-lg border-b-2" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">概要</button>
-        </li>
-        <li class="mr-2" role="presentation">
-            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">ストーリー</button>
-        </li>
-        <li class="mr-2" role="presentation">
-            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">キャラクター</button>
-        </li>
-        <li role="presentation">
-            <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">ログ</button>
-        </li>
-    </ul>
-</div>
-<div id="myTabContent">
-    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      <ul class="list-inline">
-        <li class="list-inline-item"><%= link_to "author: #{@work.user.name}", user_path(@work.user.id) %></li>
-        <li class="list-inline-item">登録:<%= l @work.created_at, format: :long %></li>
-        <li class="list-inline-item">更新:<%= l @work.updated_at, format: :long %></li>
-        <p><%= simple_format(@work.summary) %></p>
-      </ul>
-    </div>
-    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-    </div>
-    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-    </div>
-    <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-        <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</strong>. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling.</p>
-    </div>
-</div>
+
+      <!-- タブ見出し -->
+      <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+          <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
+              <li class="mr-2" role="presentation">
+                  <button class="inline-block p-4 rounded-t-lg border-b-2" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">概要</button>
+              </li>
+              <li class="mr-2" role="presentation">
+                  <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">ストーリー</button>
+              </li>
+              <li class="mr-2" role="presentation">
+                  <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">キャラクター</button>
+              </li>
+              <li role="presentation">
+                  <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="contacts-tab" data-tabs-target="#contacts" type="button" role="tab" aria-controls="contacts" aria-selected="false">ログ</button>
+              </li>
+          </ul>
+      </div>
+
+      <div id="myTabContent">
+          <!-- 概要タブ中身 -->
+          <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <ul class="list-inline">
+              <li class="list-inline-item"><%= link_to "author: #{@work.user.name}", user_path(@work.user.id) %></li>
+              <li class="list-inline-item">登録:<%= l @work.created_at, format: :long %></li>
+              <li class="list-inline-item">更新:<%= l @work.updated_at, format: :long %></li>
+              <p><%= simple_format(@work.summary) %></p>
+            </ul>
+          </div>
+
+          <!-- ストーリータブ中身 -->
+          <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+              <% if current_user&.own?(@work) %>
+                <%= render 'work_blocks/modal' %>
+              <% end %>
+              <ol class="relative border-l border-gray-200 dark:border-gray-700"> 
+              <% @work_blocks.each do |work_block| %>
+                <%= render 'work_blocks/work_block', work: @work, work_blocks: @work_blocks, work_block: work_block %>
+              <% end %>
+              </ol>
+          </div>
+
+          <!-- キャラクタータブ中身 -->
+          <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+              <p class="text-sm text-gray-500 dark:text-gray-400">キャラクターを追加</p>
+          </div>
+
+          <!-- ログタブ中身 -->
+          <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+              <p class="text-sm text-gray-500 dark:text-gray-400">ログを追加</p>
+          </div>
+      </div>
 
     </div>
   </div>
