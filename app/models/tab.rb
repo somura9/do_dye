@@ -1,3 +1,3 @@
 class Tab < ApplicationRecord
-  belongs_to :work
+  has_many :work_blocks
 end
