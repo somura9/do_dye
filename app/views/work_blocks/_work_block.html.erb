@@ -1,0 +1,9 @@
+
+<% if work_block.sentence? %>
+  <%= render 'work_blocks/show_sentence', work: work, work_block: work_block, sentence: work_block.blockable%>
+<% elsif work_block.medium? %>
+ <%= render 'work_blocks/show_medium', work: work, work_block: work_block, medium: work_block.blockable%>
+<% elsif work_block.embed? %>
+  <%= render 'work_blocks/show_embed', work: work, work_block: work_block, embed: work_block.blockable%>
+<% end %>
+

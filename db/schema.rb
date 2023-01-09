@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_17_110335) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_26_085455) do
   create_table "embeds", charset: "utf8mb4", force: :cascade do |t|
     t.string "embed_type"
     t.string "identifier"
-    t.bigint "tab_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tab_id"], name: "index_embeds_on_tab_id"
+    t.bigint "work_block_id"
+    t.index ["work_block_id"], name: "index_embeds_on_work_block_id"
   end
 
   create_table "likes", charset: "utf8mb4", force: :cascade do |t|
@@ -31,26 +31,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_110335) do
 
   create_table "media", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.bigint "tab_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tab_id"], name: "index_media_on_tab_id"
+    t.bigint "work_block_id"
+    t.index ["work_block_id"], name: "index_media_on_work_block_id"
   end
 
   create_table "sentences", charset: "utf8mb4", force: :cascade do |t|
     t.text "body"
-    t.bigint "tab_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tab_id"], name: "index_sentences_on_tab_id"
+    t.bigint "work_block_id"
+    t.index ["work_block_id"], name: "index_sentences_on_work_block_id"
   end
 
   create_table "tabs", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
-    t.bigint "work_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["work_id"], name: "index_tabs_on_work_id"
   end
 
   create_table "tags", charset: "utf8mb4", force: :cascade do |t|
@@ -102,12 +100,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_17_110335) do
     t.index ["user_id"], name: "index_works_on_user_id"
   end
 
-  add_foreign_key "embeds", "tabs"
+  add_foreign_key "embeds", "work_blocks"
   add_foreign_key "likes", "users"
   add_foreign_key "likes", "works"
-  add_foreign_key "media", "tabs"
-  add_foreign_key "sentences", "tabs"
-  add_foreign_key "tabs", "works"
+  add_foreign_key "media", "work_blocks"
+  add_foreign_key "sentences", "work_blocks"
   add_foreign_key "work_blocks", "works"
   add_foreign_key "work_tags", "tags"
   add_foreign_key "work_tags", "works"

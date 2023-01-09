@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   delete 'logout', to: 'user_sessions#destroy'
 
   root 'works#index'
+  
+  resources :works, only: %i[new create show edit update destroy] do
+    resources :work_blocks
+  end
 
-  resources :works, only: %i[new create show edit update destroy]
   resources :users, only: %i[new create show edit update destroy]
 end

@@ -1,3 +1,4 @@
 class Embed < ApplicationRecord
-  belongs_to :tab
+  has_one :work_block, as: :blockable, dependent: :destroy
+  has_one :work, through: :work_block
 end
