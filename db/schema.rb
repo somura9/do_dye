@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_26_085455) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_10_064705) do
   create_table "embeds", charset: "utf8mb4", force: :cascade do |t|
     t.string "embed_type"
     t.string "identifier"
@@ -76,7 +76,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_085455) do
     t.bigint "blockable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tab_id"
     t.index ["blockable_type", "blockable_id"], name: "index_work_blocks_on_blockable"
+    t.index ["tab_id"], name: "index_work_blocks_on_tab_id"
     t.index ["work_id"], name: "index_work_blocks_on_work_id"
   end
 
@@ -105,6 +107,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_26_085455) do
   add_foreign_key "likes", "works"
   add_foreign_key "media", "work_blocks"
   add_foreign_key "sentences", "work_blocks"
+  add_foreign_key "work_blocks", "tabs"
   add_foreign_key "work_blocks", "works"
   add_foreign_key "work_tags", "tags"
   add_foreign_key "work_tags", "works"
