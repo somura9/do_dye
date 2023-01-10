@@ -42,7 +42,7 @@
         </div>
       </nav>
       <div class="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-        <%= button_to "Log out", logout_path, method: :delete %>
+        <%= button_to "Log out", logout_path, method: :delete , class: 'ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-gray-900 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-700' %>
         <%= link_to current_user.name, user_path(current_user.id), class: 'ml-8 inline-flex items-center justify-center whitespace-nowrap  px-4 py-2 font-bold' %>
       </div>
     </div>
