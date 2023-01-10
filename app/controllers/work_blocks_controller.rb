@@ -9,11 +9,12 @@ class WorkBlocksController < ApplicationController
   def new
     @blockable_type = params[:blockable_type]
     @work_block = WorkBlock.new
+    @tab = params[:tab]
   end
 
   def create
     WorkBlock.transaction do
-      @work_block = @work.work_blocks.new
+      @work_block = @work.work_blocks.new(tab_id: params[:tab])
 
 
       blockable_type = params[:blockable_type]

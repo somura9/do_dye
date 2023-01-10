@@ -23,6 +23,9 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @storys = @work.work_blocks.where(tab_id: 1).preload(:blockable)
+    @characters = @work.work_blocks.where(tab_id: 2).preload(:blockable)
+    @logs = @work.work_blocks.where(tab_id: 3).preload(:blockable)
     @work_blocks = @work.work_blocks.preload(:blockable)
   end
 

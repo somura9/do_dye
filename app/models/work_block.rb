@@ -1,6 +1,7 @@
 class WorkBlock < ApplicationRecord
   belongs_to :work
   belongs_to :blockable, polymorphic: true, dependent: :destroy
+  belongs_to :tab
 
 
   class << self
