@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_many :works, dependent: :destroy
 
+  enum role: { general: 0, admin: 1 }
+
   # 自分の作成したオブジェクトか確認する
   def own?(object)
     id == object.user_id
