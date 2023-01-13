@@ -39,6 +39,7 @@ pickle-email-*.html
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
+!/tmp/mysql.sock
 
 /public/assets
 
