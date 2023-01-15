@@ -14,7 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: railsuser
-  password: ${{ secrets.RAILS_PASSWORD }}
+  password: railspass
   socket: /tmp/mysql.sock
 
 development:
@@ -54,5 +54,5 @@ production:
     host: <%= Rails.application.credentials.database[:host] %>
     database: do_dye_production
     username: railsuser
-    password: ${{ secrets.RAILS_PASSWORD }}
+    password: railspass
   <% end %>
