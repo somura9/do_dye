@@ -13,8 +13,8 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.credentials.db[:username] %>
-  password: <%= Rails.application.credentials.db[:password] %>
+  username: railsuser
+  password: ${{ secrets.RAILS_PASSWORD }}
   socket: /tmp/mysql.sock
 
 development:
@@ -50,6 +50,9 @@ test:
 #
 production:
   <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  <% if Rails.application.credentials.database.present? %>
+    host: <%= Rails.application.credentials.database[:host] %>
+    database: do_dye_production
+    username: railsuser
+    password: ${{ secrets.RAILS_PASSWORD }}
+  <% end %>
