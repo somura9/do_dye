@@ -12,10 +12,11 @@
 default: &default
   adapter: mysql2
   encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
   username: railsuser
   password: railspass
   socket: /tmp/mysql.sock
+  reconnect: true
 
 development:
   <<: *default
@@ -50,9 +51,7 @@ test:
 #
 production:
   <<: *default
-  <% if Rails.application.credentials.database.present? %>
-    host: <%= Rails.application.credentials.database[:host] %>
-    database: do_dye_production
-    username: railsuser
-    password: railspass
-  <% end %>
+  database: do_dye_production
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
