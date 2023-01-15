@@ -53,3 +53,4 @@ production:
   database: do_dye_production
   username: do_dye
   password: <%= ENV["DO_DYE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['JAWSDB_URL']&.sub(/\Amysql/, 'mysql2') %>
