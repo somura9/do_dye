@@ -5,13 +5,3 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-Tab.create!(
-  name: 'ストーリー',
-)
-Tab.create!(
-  name: 'キャラクター',
-)
-Tab.create!(
-  name: 'ログ',
-)

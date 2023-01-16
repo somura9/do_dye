@@ -29,7 +29,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:danger]
-      render :new
+      render :edit
     end
   end
 
