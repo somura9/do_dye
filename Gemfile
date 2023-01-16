@@ -65,6 +65,7 @@ group :development do
 
 end
 gem 'sorcery'
+gem 'rails-i18n'
 
 
 gem "tailwindcss-rails", "~> 2.0"
