@@ -2,6 +2,7 @@
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <%= form_with url: admin_login_path, local: true do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
         <div class="block text-black-700 text-sm font-bold mb-2">
           <%= f.label :email %>
           <%= f.text_field :email, class: 'form-control' %>
