@@ -2,7 +2,7 @@
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <div class="mb-4">
       <div class="text-3xl font-bold pb-4">
-        <h1>Signup</h1>
+        <h1>新規登録</h1>
       </div>
       <%= form_with model: @user, local: true do |f| %>
         <div class="block text-black-700 text-sm font-bold mb-2">
@@ -22,11 +22,11 @@
           <%= f.password_field :password_confirmation, class: 'form-control' %>
         </div>
         <div class='flex items-center justify-between'>
-          <%= f.submit 'signup', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+          <%= f.submit '送信', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
         </div>
       <% end %>
       <div class='ttext-center text-gray-500 text-xs'>
-        <%= link_to ('login_page'), login_path %>
+        <%= link_to 'すでに登録済みの方はこちら', login_path %>
       </div>
     </div>
   </div>

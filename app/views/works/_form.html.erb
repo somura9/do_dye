@@ -1,36 +1,36 @@
-<%= form_with model: work, local: true do |f| %>
-  <div class='md:w-1/3'>
-    <div>
-      <!------ 画像の添付 ------>
-      <%= f.label :thumbnail, class: "form-label" %><br>
-      <%= f.file_field :thumbnail, onchange: "thumbnailImage(this);", class: "mb-3" %>
-      <!------ 添付画像のプレビューを表示 ------>
-      <div id="thumbnail" >
-        <img id="thumbnail_preview" class="mb-3" width="100">
-      </div>
-      <!------ 現在DBに登録(保存)されている画像を表示 ------>
-      <% if work.thumbnail.present? %> <!-- @user.avatarが存在する場合のみ image_tag を使用(if文ないとエラーが出る) -->
-        <span><b>[現在登録されている画像]</b></span>
-        <%= image_tag work.thumbnail.url, width: 200, class: "mb-2" %>
-      <% end %>
-    </div>
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control' %>
-    </div>
+<%= form_with model: work, local: true, class: 'w-full max-w-xs mx-auto' do |f| %>
+  <div class="mb-6"><!------ 画像の添付 ------>
+    <%= f.label :title, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <%= f.text_field :title, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
   </div>
-  <div class='md:w-2/3'>
-    <div >
-      <%= f.label :summary %>
-      <%= f.text_field :summary, class: 'form-control' %>
-    </div>
+
+  <!------ あらすじ ------>
+  <div class="mb-6">
+    <%= f.label :summary, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <%= f.text_area :summary, rows: 2, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
   </div>
+
+  <!------ 画像の添付 ------>
+  <div class="mb-6">
+    <%= f.label :thumbnail, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= f.file_field :thumbnail, onchange: "thumbnailImage(this);", class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
+  </div>
+
+  <!------ 画像プレビュー ------>
+  <div id="thumbnail" class="mb-6" >
+    <img id="thumbnail_preview" class="mb-3" width="600">
+  </div>
+  <% if work.thumbnail.present? %> 
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-bold">現在登録されている画像</label>
+    <%= image_tag work.thumbnail.url, size: '600x400', class: "mb-2" %>
+  <% end %>
+
   <div class='flex items-center justify-between'>
-    <%= f.submit 'create', class:  "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+    <%= f.submit '送信', class:  "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" %>
   </div>
 <% end %>
 
-<!------ プレビュー表示用の JavaScript ------->
+<!------ プレビュー表示用の JavaScript ------>
 <script>
   function thumbnailImage(obj){
       var fileReader = new FileReader();
