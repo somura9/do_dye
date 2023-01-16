@@ -53,5 +53,5 @@ production:
   <<: *default
   database: do_dye_production
   username: root
-  password:
-  socket: /var/lib/mysql/mysql.sock
+  password: <%= Rails.application.credentials.db[:password] %>
+  socket: /tmp/mysql.sock
