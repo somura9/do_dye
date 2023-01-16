@@ -1,32 +1,36 @@
-<h1>プロフィール設定</h1>
-<%= form_with model: @user, local: true do |f| %>
-  <div class="form-group">
-    <!------ 画像の添付 ------>
-    <%= f.label :avatar, class: "form-label" %><br>
-    <%= f.file_field :avatar, onchange: "avatarImage(this);", class: "mb-3" %>
-    <!------ 添付画像のプレビューを表示 ------>
-    <div id="avatar" >
-      <img id="avatar_preview" class="mb-3" width="100">
+<%= form_with model: @user, local: true, class: 'w-full max-w-xs mx-auto' do |f| %>
+  <!------ ユザネ ------>
+  <div class="mb-6">
+    <%= f.label :name, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <%= f.text_field :name, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
+  </div>
+
+  <!------ プロフィール ------>
+  <div class="mb-6">
+    <%= f.label :bio, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <%= f.text_area :bio, rows: 3, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
+  </div>
+
+  <!------ 画像の添付 ------>
+  <div class="mb-6">
+    <%= f.label :avatar, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+    <%= f.file_field :avatar, onchange: "avatarImage(this);", class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500' %>
+  </div>
+
+  <!------ 画像プレビュー ------>
+  <div id="avatar" class="mb-6" >
+      <img id="avatar_preview" class="mb-3" width="200">
     </div>
-    <!------ 現在DBに登録(保存)されている画像を表示 ------>
-    <% if @user.avatar.present? %> <!-- @user.avatarが存在する場合のみ image_tag を使用(if文ないとエラーが出る) -->
-      <span><b>[現在登録されている画像]</b></span>
-      <%= image_tag @user.avatar_url, width: 200, class: "mb-2" %>
-    <% end %>
-  </div>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control' %>
-  </div>
-  <div class="form-group">
-    <%= f.label :bio %>
-    <%= f.text_area :bio, class: 'form-control' %>
-  </div>
+  <% if @user.avatar.present? %> 
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white font-bold">現在登録されている画像</label>
+    <%= image_tag @user.avatar_url, size: '200x200', class: "mb-2" %>
+  <% end %>
 
-
-  <%= f.submit class: 'btn btn-primary' %>
+  <div class='flex items-center justify-between'>
+    <%= f.submit '送信', class:  "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800" %>
+  </div>
 <% end %>
-
+</div>
 
 <!------ プレビュー表示用の JavaScript ------->
 <script>

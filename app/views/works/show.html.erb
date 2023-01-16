@@ -6,17 +6,18 @@
         <div class="card-body">
           <div class='row'>
             <div >
-              <%= image_tag @work.thumbnail.url, class: 'mx-auto max-w-lg h-auto' %>
+              <%= image_tag @work.thumbnail.url, class: 'mx-auto max-w-lg h-auto', size: "400x600" %>
             </div>
             <div class='col-md-9'>
               <div class='text-3xl font-bold'>
                 <%= @work.title %>
               </div>
-              <div class='mr10 float-right'>
+              <div class='mr10 mb-10 float-right'>
                 <% if current_user&.own?(@work) %>
                   <%= render 'crud_menus', work: @work %>
                 <% end %>
               </div>
+              <br>
             </div>
           </div>
         </div>
