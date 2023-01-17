@@ -1,15 +1,17 @@
 <div class="w-full max-w-xs mx-auto">
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="text-3xl font-bold pb-4">
+      <h1>管理者ページ</h1>
+    </div>
     <div class="mb-4">
       <%= form_with url: admin_login_path, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-        <div class="block text-black-700 text-sm font-bold mb-2">
-          <%= f.label :email %>
-          <%= f.text_field :email, class: 'form-control' %>
+        <div class="mb-6">
+          <%= f.label :email, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.text_field :email, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
         </div>
         <div class="block text-black-700 text-sm font-bold mb-2">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <%= f.label :password, class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+          <%= f.password_field :password, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' %>
         </div>
         <div class='flex items-center justify-between'>
           <%= f.submit 'login', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
