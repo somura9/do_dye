@@ -18,7 +18,7 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.all
+    @works = Work.where(status: 0)
   end
 
   def show
@@ -52,6 +52,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    params.require(:work).permit(:title, :summary, :thumbnail, :thumbnail_cache)
+    params.require(:work).permit(:title, :summary, :thumbnail, :thumbnail_cache, :status)
   end
 end
