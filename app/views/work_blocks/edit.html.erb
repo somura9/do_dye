@@ -2,21 +2,21 @@
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
 
     <div class="text-3xl font-bold pb-4">
-      <h1>設定を追加する</h1>
+      <h1>設定を編集する</h1>
     </div>
 
       <% if @work_block.sentence? %>
         <!-- 文章編集フォーム -->
-        <div class=" p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
+        <div class="p-4 bg-gray-50 rounded-lg dark:bg-gray-800">
           <p class="text-sm text-gray-500 dark:text-gray-400">
           <a href="/?content=sentence"></a>
             <%= form_with model: @sentence, url: work_work_block_path(@work, @work_block), local: true do |f|%>
               <div>
                 <%= f.hidden_field :blockable_type, :value => Sentence %>
                 <%= f.label :body, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-                <%= f.text_area :body, rows: 4, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+                <%= f.text_area :body, rows: 4, class: "mb-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
               </div>
-              <%= f.submit :GO, class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+              <%= f.submit '送信', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
             <% end %>
           </p>
         </div>
@@ -29,9 +29,9 @@
                 <div>
                   <%= f.hidden_field :blockable_type, :value => Medium %>
                   <%= f.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-                  <%= f.file_field :name, rows: 4, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
+                  <%= f.file_field :name, rows: 4, class: "mb-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"%>
                 </div>
-                <%= f.submit :GO, class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+                <%= f.submit '送信', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
               <% end %>
             </p>
         </div>
@@ -44,9 +44,9 @@
               <div>
                 <%= f.hidden_field :blockable_type, :value => Embed %>
                 <%= f.label :identifier, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
-                <%= f.text_field :identifier, rows: 4, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "ツイートのurlをコピペして下さい。ツイートの共有ボタンからツイートのリンクをコピーできます。" %>
+                <%= f.text_field :identifier, rows: 4, class: "mb-3 block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500", placeholder: "ツイートのurlをコピペして下さい。ツイートの共有ボタンからツイートのリンクをコピーできます。" %>
               </div>
-              <%= f.submit :GO, class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
+              <%= f.submit '送信', class: "text-white bg-gray-900 hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
             <% end %>
           </p>
         </div>

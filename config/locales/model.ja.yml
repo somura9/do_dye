@@ -18,6 +18,9 @@ ja:
           title: タイトル
           summary: あらすじ
           thumbnail: サムネイル
+        user_session:
+          email: メールアドレス
+          password: パスワード
         sentence:
           body: 文章
         medium:
