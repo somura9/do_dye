@@ -3,6 +3,9 @@ ja:
     models:
       user: ユーザー 
       work: 作品
+      sentence: 文章
+      medium: 画像
+      embed: 埋め込み
     attributes:
         user:
           id: ID
@@ -15,6 +18,12 @@ ja:
           title: タイトル
           summary: あらすじ
           thumbnail: サムネイル
+        sentence:
+          body: 文章
+        medium:
+          name: 画像
+        embed:
+          identifier: URL
   attributes:
     created_at: 作成日
     updated_at: 更新日
