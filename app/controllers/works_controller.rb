@@ -18,14 +18,14 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.where(status: 0)
+    @works = Work.where(status: 0).order(id: :DESC)
   end
 
   def show
     @work = Work.find(params[:id])
     @storys = @work.work_blocks.where(tab_id: 1).preload(:blockable)
     @characters = @work.work_blocks.where(tab_id: 2).preload(:blockable)
-    @logs = @work.work_blocks.where(tab_id: 3).preload(:blockable)
+    @logs = @work.work_blocks.where(tab_id: 3).preload(:blockable).order(id: :DESC)
     @work_blocks = @work.work_blocks.preload(:blockable)
   end
 
