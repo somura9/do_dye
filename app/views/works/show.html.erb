@@ -6,18 +6,12 @@
         <div class="card-body">
           <div class='row'>
             <div >
-              <%= image_tag @work.thumbnail.url, class: 'mx-auto max-w-lg h-auto', size: "400x600" %>
+              <%= image_tag @work.thumbnail.url, class: 'mx-auto max-w-lg h-auto mb-3', width: 350 %>
             </div>
             <div class='col-md-9'>
-              <div class='text-3xl font-bold'>
+              <div class='mb-3 text-3xl font-bold'>
                 <%= @work.title %>
               </div>
-              <div class='mr10 mb-10 float-right'>
-                <% if current_user&.own?(@work) %>
-                  <%= render 'crud_menus', work: @work %>
-                <% end %>
-              </div>
-              <br>
             </div>
           </div>
         </div>
@@ -34,7 +28,7 @@
                   <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="story-tab" data-tabs-target="#story" type="button" role="tab" aria-controls="story" aria-selected="false">ストーリー</button>
               </li>
               <li class="mr-2" role="presentation">
-                  <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="character-tab" data-tabs-target="#character" type="button" role="tab" aria-controls="character" aria-selected="false">キャラクター</button>
+                  <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="character-tab" data-tabs-target="#character" type="button" role="tab" aria-controls="character" aria-selected="false">キャラ</button>
               </li>
               <li role="presentation">
                   <button class="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300" id="log-tab" data-tabs-target="#log" type="button" role="tab" aria-controls="log" aria-selected="false">ログ</button>
@@ -50,8 +44,13 @@
               <li class="list-inline-item">登録:<%= l @work.created_at, format: :long %></li>
               <li class="list-inline-item">更新:<%= l @work.updated_at, format: :long %></li>
               <p><%= simple_format(@work.summary) %></p>
+            <div class='mr10 mt-5'>
+              <% if current_user&.own?(@work) %>
+                <%= render 'crud_menus', work: @work %>
+              <% end %>
+            </div>
             </ul>
-          </div>
+            </div>
 
           <!-- ストーリータブ中身 -->
           <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="story" role="tabpanel" aria-labelledby="story-tab">

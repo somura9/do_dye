@@ -49,15 +49,17 @@ class WorkBlocksController < ApplicationController
   end
 
   def update
-    if @work_block.sentence?
-      @sentence = Sentence.find(@work_block.blockable_id)
-      @sentence.update!(sentence_params)
-    elsif @work_block.medium?
-      @medium = Medium.find(@work_block.blockable_id)
-      @medium.update!(medium_params)
-    elsif @work_block.embed?
-      @embed = Embed.find(@work_block.blockable_id)
-      @embed.update!(embed_params)
+    WorkBlock.transaction do
+      if @work_block.sentence?
+        @sentence = Sentence.find(@work_block.blockable_id)
+        @sentence.update!(sentence_params)
+      elsif @work_block.medium?
+        @medium = Medium.find(@work_block.blockable_id)
+        @medium.update!(medium_params)
+      elsif @work_block.embed?
+        @embed = Embed.find(@work_block.blockable_id)
+        @embed.update!(embed_params)
+      end
     end
 
   redirect_to @work

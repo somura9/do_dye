@@ -20,15 +20,14 @@
     <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
 
   <!-- 作品一覧 -->
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+      <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
         <% if @works.present? %>
           <%= render @works %>
         <% else %>
-          <p><%= t('.no_result') %></p>
+            <p><%= t('.no_result') %></p>
         <% end %>
       </div>
-    </div>
   </div>
-</div>
+</section>

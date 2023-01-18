@@ -1,5 +1,5 @@
 <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
-    <%= image_tag work.thumbnail.url, class: "rounded-t-lg", size: "858x483"%>
+    <%= image_tag work.thumbnail.url, class: "rounded-t-lg", size: "600x400"%>
     <div class='mr10 float-right'>
       <% if current_user&.own?(work) %>
         <%= render 'works/crud_menus', work: work %>
