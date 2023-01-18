@@ -12,6 +12,7 @@ ja:
           name: 名前
           email: メールアドレス
           avatar: プロフィール画像
+          bio: プロフィール
           password: パスワード
           password_confirmation: パスワード確認
         work:
