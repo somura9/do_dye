@@ -5,8 +5,13 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process resize_to_fill: [400, 400, "Center"]
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  if Rails.env.development? # 開発環境の場合
+    storage :file
+  elsif Rails.env.test? # テスト環境の場合
+    storage :file
+  else # 本番環境の場合
+    storage :fog
+  end
 
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
