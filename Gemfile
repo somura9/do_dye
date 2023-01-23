@@ -72,4 +72,5 @@ gem "tailwindcss-rails", "~> 2.0"
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 gem 'administrate'
-gem "aws-sdk-s3", require: false
+gem 'dotenv-rails'
+gem 'fog-aws'
