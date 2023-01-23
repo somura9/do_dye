@@ -74,3 +74,4 @@ gem 'mini_magick'
 gem 'administrate'
 gem 'dotenv-rails'
 gem 'fog-aws'
+gem "aws-sdk-s3", require: false
