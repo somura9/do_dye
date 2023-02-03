@@ -1,8 +1,6 @@
 class WorkBlocksController < ApplicationController
-
   before_action :set_work
   before_action :set_work_block, only: %i[show edit update destroy]
-
 
   def show; end
 
@@ -16,12 +14,9 @@ class WorkBlocksController < ApplicationController
     WorkBlock.transaction do
       @work_block = @work.work_blocks.new(tab_id: params[:tab])
 
-
       blockable_type = params[:blockable_type]
 
-      if blockable_type.blank? || !WorkBlock.valid_blockable_type?(blockable_type)
-        return head :bad_request
-      end
+      return head :bad_request if blockable_type.blank? || !WorkBlock.valid_blockable_type?(blockable_type)
 
       if blockable_type == 'Sentence'
         @work_block.blockable = Sentence.create!(body: params[:body])
@@ -45,7 +40,6 @@ class WorkBlocksController < ApplicationController
     elsif @work_block.embed?
       @embed = Embed.find(@work_block.blockable_id)
     end
-
   end
 
   def update
@@ -62,8 +56,7 @@ class WorkBlocksController < ApplicationController
       end
     end
 
-  redirect_to @work
-
+    redirect_to @work
   end
 
   def destroy
@@ -71,13 +64,11 @@ class WorkBlocksController < ApplicationController
     redirect_to @work
   end
 
-  
-
   private
+
   def work_block_params
     params.require(:work_block).permit(:tab_id)
   end
-
 
   def sentence_params
     params.require(:sentence).permit(:body)

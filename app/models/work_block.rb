@@ -3,7 +3,6 @@ class WorkBlock < ApplicationRecord
   belongs_to :blockable, polymorphic: true, dependent: :destroy
   belongs_to :tab
 
-
   class << self
     def blockable_types
       %w[Sentence Medium Embed]
@@ -13,7 +12,6 @@ class WorkBlock < ApplicationRecord
       blockable_types.include?(type.to_s.classify)
     end
   end
-
 
   def sentence?
     blockable.is_a?(Sentence)
@@ -26,5 +24,4 @@ class WorkBlock < ApplicationRecord
   def embed?
     blockable.is_a?(Embed)
   end
-
 end

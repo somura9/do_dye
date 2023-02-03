@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     @works = Work.where(user_id: params[:id])
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
@@ -34,16 +33,17 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy! 
+    @user.destroy!
     redirect_to root_path
   end
 
   private
+
   def set_current_user
     @user = User.find(current_user.id)
   end
 
   def user_params
-    params.require(:user).permit(:name ,:email, :password, :password_confirmation, :bio, :avatar, :avatar_cache)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :bio, :avatar, :avatar_cache)
   end
 end

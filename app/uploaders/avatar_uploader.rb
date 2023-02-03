@@ -2,7 +2,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [400, 400, "Center"]
+  process resize_to_fill: [400, 400, 'Center']
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development? # 開発環境の場合
@@ -28,8 +28,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

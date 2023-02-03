@@ -19,7 +19,7 @@ class User < ApplicationRecord
     id == object.user_id
   end
 
-  #　自分かどうか確認する
+  # 　自分かどうか確認する
   def me?(object)
     id == object.id
   end

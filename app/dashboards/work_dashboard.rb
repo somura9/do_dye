@@ -1,4 +1,4 @@
-require "administrate/base_dashboard"
+require 'administrate/base_dashboard'
 
 class WorkDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
@@ -19,7 +19,7 @@ class WorkDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     work_blocks: Field::HasMany,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
+    updated_at: Field::DateTime
   }.freeze
 
   # COLLECTION_ATTRIBUTES
