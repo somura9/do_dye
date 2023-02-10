@@ -13,16 +13,16 @@ class WorkBlocksController < ApplicationController
   def create
     WorkBlock.transaction do
       @work_block = @work.work_blocks.new(tab_id: params[:tab])
-
       blockable_type = params[:blockable_type]
 
       return head :bad_request if blockable_type.blank? || !WorkBlock.valid_blockable_type?(blockable_type)
 
-      if blockable_type == 'Sentence'
+      case blockable_type
+      when 'Sentence'
         @work_block.blockable = Sentence.create!(body: params[:body])
-      elsif blockable_type == 'Medium'
+      when 'Medium'
         @work_block.blockable = Medium.create!(name: params[:name])
-      elsif blockable_type == 'Embed'
+      when 'Embed'
         @work_block.blockable = Embed.create!(identifier: params[:identifier])
       end
 

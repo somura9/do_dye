@@ -1,0 +1,19 @@
+inherit_from: .rubocop_todo.yml
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/LineLength:
+  Max: 198
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/admin/user_sessions_controller.rb'
+    - 'app/helpers/admin/user_sessions_helper.rb'
