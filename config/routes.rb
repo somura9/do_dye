@@ -3,10 +3,8 @@ Rails.application.routes.draw do
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
 
-    root to: 'work_tags#index'
-    resources :work_tags
+    root to: 'works#index'
     resources :work_blocks
-    resources :works
     resources :users
     resources :tags
     resources :tabs

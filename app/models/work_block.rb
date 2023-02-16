@@ -29,16 +29,11 @@ class WorkBlock < ApplicationRecord
     case type.to_s.classify
     when 'Sentence'
       self.blockable = Sentence.create!(body: params[:body])
-
     when 'Medium'
       self.blockable = Medium.create!(name: params[:name])
-
     when 'Embed'
       self.blockable = Embed.create!(identifier: params[:identifier])
-    else
-      raise "ブロックタイプが不正です (#{type})"
     end
-
     blockable
   end
 end

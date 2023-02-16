@@ -61,11 +61,11 @@ class WorkBlocksController < ApplicationController
   def set_work
     @work = Work.find_by!(id: params[:work_id])
   end
-  
+
   def set_work_block
     @work_block = @work.work_blocks.find(params[:id])
   end
-  
+
   def work_block_params
     params.require(:work_block).permit(:tab_id)
   end
