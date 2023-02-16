@@ -2,7 +2,7 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [1200, 800, "Center"]
+  process resize_to_fill: [1200, 800, 'Center']
 
   # Choose what kind of storage to use for this uploader:
   if Rails.env.development? # 開発環境の場合
@@ -24,6 +24,6 @@ class ThumbnailUploader < CarrierWave::Uploader::Base
   end
 
   def extension_allowlist
-    %w(jpg jpeg gif png)
+    %w[jpg jpeg gif png]
   end
 end

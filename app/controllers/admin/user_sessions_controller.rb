@@ -4,9 +4,9 @@ module Admin
     layout 'application'
 
     def new; end
-  
+
     def create
-      @user = login(params[:email], params[:password]) #Sorceryメソッド。emailとpasswordでログイン認証する。
+      @user = login(params[:email], params[:password]) # Sorceryメソッド。emailとpasswordでログイン認証する。
       if @user
         redirect_to admin_root_path, success: 'ログインしました'
       else

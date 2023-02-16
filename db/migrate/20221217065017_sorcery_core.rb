@@ -7,9 +7,9 @@ class SorceryCore < ActiveRecord::Migration[7.0]
       t.string :salt
       t.string :avatar
       t.string :bio
-      t.integer :role,             null: false, default: 0
+      t.integer :role, null: false, default: 0
 
-      t.timestamps                null: false
+      t.timestamps null: false
     end
   end
 end

@@ -29,8 +29,7 @@ class WorksController < ApplicationController
     @work_blocks = @work.work_blocks.preload(:blockable)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @work.update(work_params)
@@ -42,11 +41,12 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work.destroy! 
+    @work.destroy!
     redirect_to root_path
   end
 
   private
+
   def set_current_user_work
     @work = current_user.works.find(params[:id])
   end
