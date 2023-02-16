@@ -34,24 +34,24 @@ class WorkBlocksController < ApplicationController
 
   def edit
     if @work_block.sentence?
-      @sentence = Sentence.find(@work_block.blockable_id)
+      set_sentence
     elsif @work_block.medium?
-      @medium = Medium.find(@work_block.blockable_id)
+      set_medium
     elsif @work_block.embed?
-      @embed = Embed.find(@work_block.blockable_id)
+      set_embed
     end
   end
 
   def update
     WorkBlock.transaction do
       if @work_block.sentence?
-        @sentence = Sentence.find(@work_block.blockable_id)
+        set_sentence
         @sentence.update!(sentence_params)
       elsif @work_block.medium?
-        @medium = Medium.find(@work_block.blockable_id)
+        set_medium
         @medium.update!(medium_params)
       elsif @work_block.embed?
-        @embed = Embed.find(@work_block.blockable_id)
+        set_embed
         @embed.update!(embed_params)
       end
     end
@@ -88,5 +88,17 @@ class WorkBlocksController < ApplicationController
 
   def set_work_block
     @work_block = @work.work_blocks.find(params[:id])
+  end
+
+  def set_sentence
+    @sentence = Sentence.find(@work_block.blockable_id)
+  end
+
+  def set_medium
+    @medium = Medium.find(@work_block.blockable_id)
+  end
+
+  def set_embed
+    @embed = Embed.find(@work_block.blockable_id)
   end
 end
