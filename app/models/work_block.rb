@@ -24,4 +24,21 @@ class WorkBlock < ApplicationRecord
   def embed?
     blockable.is_a?(Embed)
   end
+
+  def creaet_blockable!(type, params)
+    case type.to_s.classify
+    when 'Sentence'
+      self.blockable = Sentence.create!(body: params[:body])
+
+    when 'Medium'
+      self.blockable = Medium.create!(name: params[:name])
+
+    when 'Embed'
+      self.blockable = Embed.create!(identifier: params[:identifier])
+    else
+      raise "ブロックタイプが不正です (#{type})"
+    end
+
+    blockable
+  end
 end

@@ -17,15 +17,7 @@ class WorkBlocksController < ApplicationController
 
       return head :bad_request if blockable_type.blank? || !WorkBlock.valid_blockable_type?(blockable_type)
 
-      case blockable_type
-      when 'Sentence'
-        @work_block.blockable = Sentence.create!(body: params[:body])
-      when 'Medium'
-        @work_block.blockable = Medium.create!(name: params[:name])
-      when 'Embed'
-        @work_block.blockable = Embed.create!(identifier: params[:identifier])
-      end
-
+      @work_block.creaet_blockable!(blockable_type, params)
       @work_block.save!
     end
 
@@ -66,6 +58,14 @@ class WorkBlocksController < ApplicationController
 
   private
 
+  def set_work
+    @work = Work.find_by!(id: params[:work_id])
+  end
+  
+  def set_work_block
+    @work_block = @work.work_blocks.find(params[:id])
+  end
+  
   def work_block_params
     params.require(:work_block).permit(:tab_id)
   end
@@ -80,14 +80,6 @@ class WorkBlocksController < ApplicationController
 
   def embed_params
     params.require(:embed).permit(:embed_type, :identifier)
-  end
-
-  def set_work
-    @work = Work.find_by!(id: params[:work_id])
-  end
-
-  def set_work_block
-    @work_block = @work.work_blocks.find(params[:id])
   end
 
   def set_sentence
