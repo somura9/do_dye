@@ -18,7 +18,7 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.where(status: 0).order(id: :DESC)
+    @works = Work.publish.order(id: :DESC)
   end
 
   def show
