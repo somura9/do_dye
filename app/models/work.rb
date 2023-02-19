@@ -2,6 +2,7 @@ class Work < ApplicationRecord
   mount_uploader :thumbnail, ThumbnailUploader
   validates :title, presence: true, length: { maximum: 255 }
   validates :summary, presence: true, length: { maximum: 255 }
+  validates :status, presence: true
 
   belongs_to :user
   has_many :work_blocks, inverse_of: :work
