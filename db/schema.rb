@@ -77,7 +77,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_110_064_705) do
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
     t.bigint 'tab_id'
-    t.index %w[blockable_type blockable_id], name: 'index_work_blocks_on_blockable'
+    t.index ['blockable_type', 'blockable_id'], name: 'index_work_blocks_on_blockable'
     t.index ['tab_id'], name: 'index_work_blocks_on_tab_id'
     t.index ['work_id'], name: 'index_work_blocks_on_work_id'
   end
@@ -94,8 +94,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_110_064_705) do
   create_table 'works', charset: 'utf8mb4', force: :cascade do |t|
     t.string 'title', null: false
     t.string 'thumbnail'
-    t.string 'summary'
-    t.integer 'status'
+    t.string 'summary', null: false
+    t.integer 'status', default: 0, null: false
     t.bigint 'user_id', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
