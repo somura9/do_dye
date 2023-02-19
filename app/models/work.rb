@@ -8,4 +8,6 @@ class Work < ApplicationRecord
   has_many :sentences, through: :work_blocks, source: :blockable, source_type: 'Sentence'
   has_many :media, through: :work_blocks, source: :blockable, source_type: 'Medium'
   has_many :embeds, through: :work_blocks, source: :blockable, source_type: 'Embed'
+
+  enum status: { publish: 0, hide: 1 }
 end
