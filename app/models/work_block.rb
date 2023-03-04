@@ -28,12 +28,26 @@ class WorkBlock < ApplicationRecord
   def creaet_blockable!(type, params)
     case type.to_s.classify
     when 'Sentence'
-      self.blockable = Sentence.create!(body: params[:body])
+      set_work_work_block(params)
+      @work_block.blockable = Sentence.create!(body: params[:body])
+      @work_block.save!
     when 'Medium'
-      self.blockable = Medium.create!(name: params[:name])
+      @work = Work.find_by!(id: params[:work_id])
+      params[:name].each do |name|
+        @work_block = @work.work_blocks.new(tab_id: params[:tab])
+        @work_block.blockable = Medium.create!(name: name)
+        @work_block.save!
+      end
     when 'Embed'
-      self.blockable = Embed.create!(identifier: params[:identifier])
+      set_work_work_block(params)
+      @work_block.blockable = Embed.create!(identifier: params[:identifier])
+      @work_block.save!
     end
     blockable
+  end
+
+  def set_work_work_block(params)
+    @work = Work.find_by!(id: params[:work_id])
+    @work_block = @work.work_blocks.new(tab_id: params[:tab])
   end
 end

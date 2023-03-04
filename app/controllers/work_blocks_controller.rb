@@ -18,7 +18,6 @@ class WorkBlocksController < ApplicationController
       return head :bad_request if blockable_type.blank? || !WorkBlock.valid_blockable_type?(blockable_type)
 
       @work_block.creaet_blockable!(blockable_type, params)
-      @work_block.save!
     end
 
     redirect_to @work
