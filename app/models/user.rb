@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :role,   presence: true
 
   has_many :works, dependent: :destroy
+  has_many :like_works, through: :likes, source: :work
 
   enum role: { general: 0, admin: 1 }
 
