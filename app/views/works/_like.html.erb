@@ -1,0 +1,3 @@
+<%= button_to likes_path(work_id: work.id), id: "js-like-button-for-work-#{work.id}", class:"float-right", data: { "turbo-method": :post } do %>
+  未いいね
+<% end %>
