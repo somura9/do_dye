@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates :role,   presence: true
 
   has_many :works, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :like_works, through: :likes, source: :work
 
   enum role: { general: 0, admin: 1 }
@@ -23,5 +24,17 @@ class User < ApplicationRecord
   # 　自分かどうか確認する
   def me?(object)
     id == object.id
+  end
+
+  def like(work)
+    like_works << work
+  end
+
+   def unlike(work)
+    like_works.destroy(work)
+  end
+
+  def like?(work)
+    like_works.include?(work)
   end
 end
