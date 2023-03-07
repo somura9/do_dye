@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: %i[new create show edit update destroy]
+  resources :likes, only: %i[create destroy]
 end
