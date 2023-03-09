@@ -1,0 +1,11 @@
+<section class="bg-white dark:bg-gray-900">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6 ">
+      <div class="grid gap-8 mb-6 lg:mb-16 md:grid-cols-3">
+              <% if @like_works.present? %>
+              <%= render @like_works %>
+             <% else %>
+              <p><%= t('.no_result') %></p>
+            <% end %>
+      </div>
+  </div>
+</section>

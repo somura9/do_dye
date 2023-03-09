@@ -25,7 +25,11 @@ Rails.application.routes.draw do
 
   resources :works, only: %i[new create show edit update destroy] do
     resources :work_blocks
+    collection do
+      get 'likes'
+    end
   end
 
   resources :users, only: %i[new create show edit update destroy]
+  resources :likes, only: %i[create destroy]
 end

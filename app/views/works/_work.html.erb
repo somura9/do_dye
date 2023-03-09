@@ -3,6 +3,8 @@
     <div class='mr10 float-right'>
       <% if current_user&.own?(work) %>
         <%= render 'works/crud_menus', work: work %>
+      <% else %>
+        <%= render 'like_button', work: work %>
       <% end %>
     </div>
     <div class="p-5">
