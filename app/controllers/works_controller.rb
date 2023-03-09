@@ -45,6 +45,10 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  def likes
+    @like_works = current_user.like_works.includes(:user).order(created_at: :desc)
+  end
+
   private
 
   def set_current_user_work
