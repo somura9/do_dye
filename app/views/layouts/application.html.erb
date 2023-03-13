@@ -13,17 +13,26 @@
   </head>
 
   <body>
-    <nav class="bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
-      <% if logged_in? %>
+    <% if logged_in? && !current_page?(start_path) %>
+        <nav class="bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
         <%= render 'shared/header' %>
-      <% else %>
+        </nav>
+      <% elsif !current_page?(start_path) %>
+        <nav class="bg-white px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0 border-b border-gray-200">
         <%= render 'shared/before_login_header' %>
+        </nav>
       <% end %>
-    </nav>
+      <% if !current_page?(start_path) %>
       <main class="container mx-auto mt-28 px-5 flex">
         <%= yield %>
       </main>
+      <% else %>
+      <main >
+       <%= yield %>
+      <% end %>
       <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
-      <%= render 'shared/footer' %>
+      <% if !current_page?(start_path) %>
+        <%= render 'shared/footer' %>
+      <% end %>
   </body>
 </html>
