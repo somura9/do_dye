@@ -5,4 +5,6 @@ class OthersController < ApplicationController
   def privacy; end
 
   def how_to; end
+
+  def landing_page; end
 end

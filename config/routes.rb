@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :embeds
   end
 
+  get 'start', to: 'others#landing_page'
   get 'login', to: 'user_sessions#new'
   post 'login', to: 'user_sessions#create'
   delete 'logout', to: 'user_sessions#destroy'
