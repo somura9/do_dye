@@ -32,10 +32,14 @@ class WorksController < ApplicationController
     @work_blocks = @work.work_blocks.preload(:blockable)
   end
 
-  def edit; end
+  def edit
+    @tags = @work.tags.pluck(:name).join(',')
+  end
 
   def update
+    tag_list = params[:work][:tag_name].split(',').uniq
     if @work.update(work_params)
+      @work.save_tag(tag_list)
       redirect_to @work
     else
       flash.now['danger']
