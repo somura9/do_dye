@@ -43,6 +43,10 @@
               <li class="list-inline-item"><%= link_to "author: #{@work.user.name}", user_path(@work.user.id) %></li>
               <li class="list-inline-item">登録:<%= l @work.created_at, format: :long %></li>
               <li class="list-inline-item">更新:<%= l @work.updated_at, format: :long %></li>
+              <li class="list-inline-item">タグ:
+                <% @work.tags.each do |tag| %>
+                    <%= link_to tag.name, works_path(tag_name: tag.name) %>
+                <% end %></li>
               <p><%= simple_format(@work.summary) %></p>
             <div class='mr10 mt-5'>
               <% if current_user&.own?(@work) %>

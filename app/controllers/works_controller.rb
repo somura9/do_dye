@@ -8,10 +8,13 @@ class WorksController < ApplicationController
 
   def create
     @work = current_user.works.build(work_params)
+    tag_list = params[:work][:tag_name].split(',').uniq
     if @work.valid?
       @work.save
+      @work.save_tag(tag_list)
       redirect_to @work
     else
+      @tags = params[:work][:tag_name]
       flash.now[:danger]
       render :new
     end
