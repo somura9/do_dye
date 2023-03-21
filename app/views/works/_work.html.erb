@@ -12,7 +12,7 @@
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"><%= work.summary %></p>
         <%= link_to "著者: #{work.user.name}", user_path(work.user.id), class: "mb-3 font-normal text-gray-700 dark:text-gray-400"%><br>
         <% work.tags.each do |tag| %>
-          <%= link_to tag.name, works_path(tag_name: tag.name),type: "button", class: "py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
+          <%= link_to tag.name, root_path(tag_name: tag.name),type: "button", class: "py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" %>
         <% end %></li>
     </div>
 </div>

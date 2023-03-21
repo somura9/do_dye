@@ -21,7 +21,14 @@ class WorksController < ApplicationController
   end
 
   def index
-    @works = Work.publish.order(id: :DESC)
+    if params[:tag_name]
+      tag = Tag.find_by(name: params[:tag_name])
+      @q = tag.works.ransack(params[:q])
+      @works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    else
+      @q = Work.ransack(params[:q])
+      @works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    end
   end
 
   def show
@@ -53,7 +60,8 @@ class WorksController < ApplicationController
   end
 
   def likes
-    @like_works = current_user.like_works.includes(:user).order(created_at: :desc)
+    @q = current_user.like_works.ransack(params[:q])
+    @like_works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
   end
 
   private

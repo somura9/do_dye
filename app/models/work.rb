@@ -29,4 +29,8 @@ class Work < ApplicationRecord
       self.tags << new_post_tag
     end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["title", "summary"]
+end
 end
