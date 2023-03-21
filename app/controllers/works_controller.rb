@@ -21,8 +21,14 @@ class WorksController < ApplicationController
   end
 
   def index
-    @q = Work.ransack(params[:q])
-    @works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    if params[:tag_name]
+      tag = Tag.find_by(name: params[:tag_name])
+      @q = tag.works.ransack(params[:q])
+      @works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    else
+      @q = Work.ransack(params[:q])
+      @works = @q.result(distinct: true).includes(:user).order(created_at: :desc)
+    end
   end
 
   def show
