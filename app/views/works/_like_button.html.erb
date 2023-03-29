@@ -1,5 +1,5 @@
 <% if current_user&.like?(work) %>
-  <%= render 'unlike', { work: work } %>
+  <%= render 'works/unlike', { work: work } %>
 <% else %>
-  <%= render 'like', { work: work  }%>
+  <%= render 'works/like', { work: work  }%>
 <% end %>
